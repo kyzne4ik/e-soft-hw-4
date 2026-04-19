@@ -4,29 +4,47 @@ import styles from "./header.module.css";
 
 interface HeaderProps {
   cartItemsCount?: number;
+  activeCategory?: string;
+  onCategoryChange?: (category: string) => void;
 }
 
-export const Header = ({ cartItemsCount = 0 }: HeaderProps) => {
+export const Header = ({
+  cartItemsCount = 0,
+  activeCategory = "tv",
+  onCategoryChange,
+}: HeaderProps) => {
+  const categories = [
+    { id: "tv", label: "TV" },
+    { id: "phone", label: "Phone" },
+    { id: "laptop", label: "Laptop" },
+  ];
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.left}>
-          <a href="/" className={styles.logo}>
+          <a
+            href="/tv"
+            className={styles.logo}
+            onClick={(e) => {
+              e.preventDefault();
+              onCategoryChange?.("tv");
+            }}
+          >
             TechStore
           </a>
           <nav className={styles.nav}>
-            <a
-              href="/tv"
-              className={`${styles.navLink} ${styles.navLinkActive}`}
-            >
-              TV
-            </a>
-            <a href="/phone" className={styles.navLink}>
-              Phone
-            </a>
-            <a href="/laptop" className={styles.navLink}>
-              Laptop
-            </a>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`${styles.navLink} ${
+                  activeCategory === cat.id ? styles.navLinkActive : ""
+                }`}
+                onClick={() => onCategoryChange?.(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
           </nav>
         </div>
 

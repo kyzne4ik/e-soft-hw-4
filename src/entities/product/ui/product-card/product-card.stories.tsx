@@ -27,7 +27,7 @@ const mockProduct = {
     "https://images.unsplash.com/photo-1625296277602-a9f0b67b3a99?w=400&q=80",
   ],
   brand: "Apple",
-  isSpecialOffer: true,
+  isSpecialOffer: false,
 };
 
 export const Default: Story = {
@@ -66,10 +66,18 @@ export const LongName: Story = {
   args: {
     product: {
       ...mockProduct,
-      model:
-        'Samsung 65" OLED 4K Smart TV with Quantum HDR and Ultra Wide Viewing Angle',
+      model: `Samsung 65" OLED 4K Smart TV with Quantum HDR and Ultra Wide Viewing Angle
+        Samsung 65" OLED 4K Smart TV with Quantum HDR and Ultra Wide Viewing Angle Samsung 65"
+        OLED 4K Smart TV with Quantum HDR and Ultra Wide Viewing Angle`,
       make: "Samsung",
       category: "tv",
     },
+  },
+};
+
+export const Favorite: Story = {
+  args: {
+    product: mockProduct,
+    isFavorite: true,
   },
 };

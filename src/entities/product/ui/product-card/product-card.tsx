@@ -1,24 +1,32 @@
 import { useState } from "react";
 import type { Product } from "../../model/types";
 import { UiButton } from "~shared/ui/ui-button";
-import { Plus, Minus, ChevronLeft, ChevronRight } from "~shared/ui/icons";
+import { UiBadge } from "~shared/ui/ui-badge";
+import { Heart, HeartFilled, Plus, Minus, ChevronLeft, ChevronRight } from "~shared/ui/icons";
 import styles from "./product-card.module.css";
 
 type ProductCardProps = {
   product: Product;
   count?: number;
+  isFavorite?: boolean;
   onAddToCart?: (id: number) => void;
   onRemoveFromCart?: (id: number) => void;
+  onToggleFavorite?: (id: number) => void;
 };
 
 export const ProductCard = ({
   product,
   count = 0,
+  isFavorite: isFavoriteProp,
   onAddToCart,
   onRemoveFromCart,
+  onToggleFavorite,
 }: ProductCardProps) => {
-  const { id, make, model, price, images } = product;
+  const { id, make, model, price, images, isSpecialOffer } = product;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFavoriteLocal, setIsFavoriteLocal] = useState(false);
+
+  const isFavorite = isFavoriteProp ?? isFavoriteLocal;
 
   const hasMultipleImages = images && images.length > 1;
 
@@ -32,9 +40,35 @@ export const ProductCard = ({
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onToggleFavorite) {
+      onToggleFavorite(id);
+    } else {
+      setIsFavoriteLocal((prev) => !prev);
+    }
+  };
+
   return (
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
+        <UiButton
+          variant="transparent"
+          className={`${styles.favoriteButton} ${isFavorite ? styles.favoriteButtonActive : ""}`}
+          onClick={handleToggleFavorite}
+          aria-label={isFavorite ? "Remove from favorite" : "Add to favorite"}
+        >
+          {isFavorite ? (
+            <HeartFilled width={24} height={24} color="#ffffff" />
+          ) : (
+            <Heart width={24} height={24} />
+          )}
+        </UiButton>
+        {isSpecialOffer && (
+          <UiBadge variant="red" className={styles.specialOfferBadge}>
+            Special Offer
+          </UiBadge>
+        )}
         {images && images.length > 0 ? (
           <img
             src={images[currentImageIndex]}

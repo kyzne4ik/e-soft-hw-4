@@ -9,20 +9,21 @@ interface UiRegisterBannerProps {
 }
 
 export const UiRegisterBanner = ({
-  initialSeconds = 3230, // 0:53:50
+  initialSeconds = 3599, // 0:59:59
   onClose,
-}: UiRegisterBannerProps) => {
+  isStatic = true,
+}: UiRegisterBannerProps & { isStatic?: boolean }) => {
   const [seconds, setSeconds] = useState(initialSeconds);
 
   useEffect(() => {
-    if (seconds <= 0) return;
+    if (isStatic || seconds <= 0) return;
 
     const timer = setInterval(() => {
       setSeconds((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [seconds]);
+  }, [seconds, isStatic]);
 
   const formatTime = (totalSeconds: number) => {
     const hrs = Math.floor(totalSeconds / 3600);
@@ -40,7 +41,7 @@ export const UiRegisterBanner = ({
         onClick={onClose}
         aria-label="Close banner"
       >
-        <Close width={20} height={20} />
+        <Close width={20} height={20} color="var(--primary-text)" />
       </UiButton>
 
       <div className={styles.header}>

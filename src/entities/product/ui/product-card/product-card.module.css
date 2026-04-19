@@ -100,9 +100,12 @@
   gap: 8px;
 }
 
-.brand {
-  font-size: 14px;
-  color: #8e8e93;
+.specialOfferBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .model {
@@ -191,9 +194,33 @@
 
 .favoriteButton {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 12px;
+  right: 12px;
   z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.2s ease;
+}
+
+.favoriteButtonActive {
+  background-color: var(--accent-red) !important;
+  color: #ffffff !important;
+}
+
+.favoriteButton:hover {
+  background-color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+.favoriteButtonActive:hover {
+  background-color: var(--accent-red) !important;
+  opacity: 0.9;
 }
 
 .info {

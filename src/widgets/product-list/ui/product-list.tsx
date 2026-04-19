@@ -5,6 +5,7 @@ import { productsService } from '~shared/api/modules/products.service';
 import styles from './product-list.module.css';
 
 interface ProductListProps {
+  category?: string;
   filters: {
     brand: string;
     minPrice: number;
@@ -12,21 +13,21 @@ interface ProductListProps {
   };
 }
 
-export const ProductList = ({ filters }: ProductListProps) => {
+export const ProductList = ({ category = "tv", filters }: ProductListProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortBy, setSortBy] = useState('featured');
+  const [sortBy, setSortBy] = useState("featured");
   const [cart, setCart] = useState<Record<number, number>>({ 8: 2 });
 
   useEffect(() => {
     const loadProducts = async () => {
       setIsLoading(true);
-      const data = await productsService.getProducts();
+      const data = await productsService.getProducts({ category });
       setProducts(data.products);
       setIsLoading(false);
     };
     loadProducts();
-  }, []);
+  }, [category]);
 
   const filteredProducts = useMemo(() => {
     return products
