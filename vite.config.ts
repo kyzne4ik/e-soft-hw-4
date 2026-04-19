@@ -24,6 +24,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "~assets": "/assets",
+      "~data": "/src/data",
     },
     tsconfigPaths: true,
   },
