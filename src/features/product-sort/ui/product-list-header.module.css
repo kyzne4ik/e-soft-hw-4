@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+  box-sizing: border-box;
+}
+
+.count {
+  font-size: 18px;
+  font-weight: var(--fw-medium);
+  color: #8e8e93;
+}
+
+.sortWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sortLabel {
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.selectWrapper {
+  position: relative;
+  min-width: 200px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  background-color: #f2f2f7;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: var(--sans);
+  color: var(--text);
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  pointer-events: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
