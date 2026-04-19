@@ -16,7 +16,7 @@
       "~widgets/*": ["./src/widgets/*"],
       "~features/*": ["./src/features/*"],
       "~entities/*": ["./src/entities/*"],
-      "~shared/*": ["./src/shared/*"],
+      "~shared/*": ["./src/shared/*"]
     },
 
     /* Bundler mode */
@@ -31,7 +31,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src"]
 }
