@@ -20,18 +20,15 @@ export const HomePage = () => {
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
       />
-
       <main className={styles.main}>
         <aside className={styles.sidebar}>
           <ProductFiltersSidebar onApply={setFilters} />
           <RegistrationBannerWidget />
         </aside>
-
         <section className={styles.content}>
           <ProductList category={activeCategory} filters={filters} />
         </section>
       </main>
-
       <Footer />
     </div>
   );

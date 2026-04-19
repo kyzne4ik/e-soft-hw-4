@@ -33,20 +33,33 @@ export const Header = ({
           >
             TechStore
           </a>
-          <nav className={styles.nav}>
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                className={`${styles.navLink} ${
-                  activeCategory === cat.id ? styles.navLinkActive : ""
-                }`}
-                onClick={() => onCategoryChange?.(cat.id)}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </nav>
+          
+          <div className={styles.rightMobile}>
+            <UiButton variant="transparent" className={styles.iconButton}>
+              <Cart width={24} height={24} />
+              {cartItemsCount > 0 && (
+                <span className={styles.cartBadge}>{cartItemsCount}</span>
+              )}
+            </UiButton>
+            <UiButton variant="transparent" className={styles.iconButton}>
+              <User width={24} height={24} />
+            </UiButton>
+          </div>
         </div>
+
+        <nav className={styles.nav}>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              className={`${styles.navLink} ${
+                activeCategory === cat.id ? styles.navLinkActive : ""
+              }`}
+              onClick={() => onCategoryChange?.(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </nav>
 
         <div className={styles.right}>
           <UiButton variant="transparent" className={styles.iconButton}>
