@@ -8,3 +8,4 @@ export * from "./clock";
 export * from "./close";
 export * from "./cart";
 export * from "./user";
+export * from "./trash";
