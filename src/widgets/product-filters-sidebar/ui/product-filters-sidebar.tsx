@@ -1,7 +1,9 @@
-import { ProductFilters } from '~features/product-filters';
-import styles from './product-filters-sidebar.module.css';
+import { useProductBrands } from "~entities/product";
+import { ProductFilters } from "~features/product-filters";
+import styles from "./product-filters-sidebar.module.css";
 
-interface ProductFiltersSidebarProps {
+type ProductFiltersSidebarProps = {
+  category: string;
   onApply: (filters: {
     brand: string;
     minPrice: number;
@@ -9,8 +11,13 @@ interface ProductFiltersSidebarProps {
   }) => void;
 }
 
-export const ProductFiltersSidebar = ({ onApply }: ProductFiltersSidebarProps) => {
-  const brands = ['Samsung', 'LG', 'Sony', 'Apple', 'Google', 'TCL', 'Hisense'];
+export const ProductFiltersSidebar = ({
+  category,
+  onApply,
+}: ProductFiltersSidebarProps) => {
+  const { brands, isLoading } = useProductBrands(category);
+
+  if (isLoading) return null;
 
   return (
     <div className={styles.sidebarSection}>
