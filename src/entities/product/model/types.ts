@@ -1,6 +1,6 @@
 export type ProductCategory = "tv" | "phone" | "laptop";
 
-export interface Product {
+export type Product = {
   id: number;
   category: ProductCategory;
   make: string;

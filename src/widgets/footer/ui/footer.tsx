@@ -1,4 +1,4 @@
-import { UiButton } from "@/shared/ui/ui-button";
+import { UiButton } from "~shared/ui/ui-button";
 import styles from "./footer.module.css";
 
 export const Footer = () => {

@@ -2,7 +2,14 @@ import { useState } from "react";
 import type { Product } from "../../model/types";
 import { UiButton } from "~shared/ui/ui-button";
 import { UiBadge } from "~shared/ui/ui-badge";
-import { Heart, HeartFilled, Plus, Minus, ChevronLeft, ChevronRight } from "~shared/ui/icons";
+import {
+  Heart,
+  HeartFilled,
+  Plus,
+  Minus,
+  ChevronLeft,
+  ChevronRight,
+} from "~shared/ui/icons";
 import styles from "./product-card.module.css";
 
 type ProductCardProps = {

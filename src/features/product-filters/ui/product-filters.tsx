@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { UiButton } from "@/shared/ui/ui-button";
-import { ChevronRight } from "@/shared/ui/icons";
+import { UiButton } from "~shared/ui/ui-button";
+import { ChevronRight } from "~shared/ui/icons";
 import styles from "./product-filters.module.css";
 
-interface ProductFiltersProps {
+type ProductFiltersProps = {
   brands: string[];
   onApply?: (filters: {
     brand: string;

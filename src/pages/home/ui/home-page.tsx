@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Header } from '~widgets/header';
-import { Footer } from '~widgets/footer';
-import { ProductList } from '~widgets/product-list';
-import { ProductFiltersSidebar } from '~widgets/product-filters-sidebar';
-import { RegistrationBannerWidget } from '~widgets/registration-banner';
-import styles from './home-page.module.css';
+import { useState } from "react";
+import { Header } from "~widgets/header";
+import { Footer } from "~widgets/footer";
+import { ProductList } from "~widgets/product-list";
+import { ProductFiltersSidebar } from "~widgets/product-filters-sidebar";
+import { RegistrationBannerWidget } from "~widgets/registration-banner";
+import styles from "./home-page.module.css";
 
 export const HomePage = () => {
   const [activeCategory, setActiveCategory] = useState("tv");
@@ -33,4 +33,3 @@ export const HomePage = () => {
     </div>
   );
 };
-

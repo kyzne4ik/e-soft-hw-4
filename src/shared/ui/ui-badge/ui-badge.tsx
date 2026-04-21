@@ -3,7 +3,7 @@ import styles from "./ui-badge.module.css";
 
 type BadgeVariant = "red" | "white";
 
-interface UiBadgeProps {
+type UiBadgeProps = {
   variant?: BadgeVariant;
   children: ReactNode;
   className?: string;

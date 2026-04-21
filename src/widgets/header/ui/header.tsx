@@ -4,7 +4,7 @@ import styles from "./header.module.css";
 
 type CategoryType = "tv" | "phone" | "laptop" | "cart";
 
-interface HeaderProps {
+type HeaderProps = {
   cartItemsCount?: number;
   activeCategory?: CategoryType;
   onCategoryChange?: (category: CategoryType) => void;
@@ -37,8 +37,8 @@ export const Header = ({
           </a>
 
           <div className={styles.rightMobile}>
-            <UiButton 
-              variant="transparent" 
+            <UiButton
+              variant="transparent"
               className={styles.iconButton}
               onClick={() => onCategoryChange?.("cart")}
             >
@@ -68,8 +68,8 @@ export const Header = ({
         </nav>
 
         <div className={styles.right}>
-          <UiButton 
-            variant="transparent" 
+          <UiButton
+            variant="transparent"
             className={styles.iconButton}
             onClick={() => onCategoryChange?.("cart")}
           >

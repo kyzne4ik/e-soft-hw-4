@@ -3,7 +3,7 @@ import { UiButton } from "~shared/ui/ui-button";
 import { Clock, Close } from "~shared/ui/icons";
 import styles from "./ui-register-banner.module.css";
 
-interface UiRegisterBannerProps {
+type UiRegisterBannerProps = {
   initialSeconds?: number;
   onClose?: () => void;
 }
