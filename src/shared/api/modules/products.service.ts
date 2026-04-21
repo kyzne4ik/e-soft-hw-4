@@ -1,10 +1,7 @@
-import type {
-  ProductsResponse,
-  GetProductsParams,
-} from "../contracts/products.contract";
+import type { ProductDto } from "../contracts/products.contract";
 
 export const productsService = {
-  async getProducts(params?: GetProductsParams): Promise<ProductsResponse> {
+  async getProducts(params?: { category: string }): Promise<ProductDto[]> {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     try {
@@ -18,10 +15,24 @@ export const productsService = {
         );
       }
 
-      return { products: filteredProducts };
+      return filteredProducts;
     } catch (error) {
       console.error("Failed to fetch products:", error);
-      return { products: [] };
+      return [];
+    }
+  },
+
+  async getProductById(id: string): Promise<ProductDto | null> {
+    try {
+      const { products } = await import("../../../data/products.ts");
+      const searchedProducts = products.find(
+        (p) => p.id.toString() === id,
+      ) as ProductDto;
+
+      return searchedProducts || null;
+    } catch (error) {
+      console.error("Failed to fetch product:", error);
+      return null;
     }
   },
 };
