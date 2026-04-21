@@ -55,3 +55,28 @@ export const useProduct = ({ category = "tv", filters }: UseProductOptions) => {
     setSortBy,
   };
 };
+
+export const useProductBrands = (category: string) => {
+  const [brands, setBrands] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBrands = async () => {
+      setIsLoading(true);
+      try {
+        const products = await productsService.getProducts({ category });
+        const uniqueBrands = Array.from(
+          new Set(products.map((p) => p.make)),
+        ).sort();
+        setBrands(uniqueBrands);
+      } catch (error) {
+        console.error("Failed to fetch brands:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchBrands();
+  }, [category]);
+
+  return { brands, isLoading };
+};
