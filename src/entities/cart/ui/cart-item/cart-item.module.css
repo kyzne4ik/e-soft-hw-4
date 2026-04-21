@@ -1,0 +1,142 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 4px;
+}
+
+.brand {
+  font-size: 14px;
+  color: #8e8e93;
+  margin: 0;
+}
+
+.model {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.actionButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 20px;
+}
+
+.minusButton {
+  background-color: #f2f2f7 !important;
+  color: #000000 !important;
+}
+
+.plusButton {
+  background-color: #05050f !important;
+  color: #ffffff !important;
+}
+
+.count {
+  font-size: 18px;
+  font-weight: 500;
+  min-width: 32px;
+  text-align: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100px;
+  padding-bottom: 4px;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.actionButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 20px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+@media (max-width: 639px) {
+  .cartItem {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .model {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .right {
+    height: 80px;
+  }
+}
