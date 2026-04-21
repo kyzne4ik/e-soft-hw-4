@@ -1,7 +1,7 @@
-import { ChevronRight } from "@/shared/ui/icons";
+import { ChevronRight } from "~shared/ui/icons";
 import styles from "./product-list-header.module.css";
 
-interface ProductListHeaderProps {
+type ProductListHeaderProps = {
   productsCount: number;
   sortValue?: string;
   onSortChange?: (value: string) => void;
@@ -24,10 +24,8 @@ export const ProductListHeader = ({
             value={sortValue}
             onChange={(e) => onSortChange?.(e.target.value)}
           >
-            <option value="featured">Featured</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
-            <option value="newest">Newest</option>
           </select>
           <div className={styles.selectIcon}>
             <ChevronRight width={16} height={16} />

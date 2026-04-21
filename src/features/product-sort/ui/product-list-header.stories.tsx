@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ProductListHeader } from "./product-list-header";
 
 const meta: Meta<typeof ProductListHeader> = {
