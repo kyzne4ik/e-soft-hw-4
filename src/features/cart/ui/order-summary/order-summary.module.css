@@ -1,0 +1,174 @@
+.summary {
+  padding: 24px;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.label {
+  font-size: 20px;
+  color: #8e8e93;
+}
+
+.value {
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.totalLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.totalValue {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 64px;
+  background-color: #05050f;
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.continueButton {
+  width: 100%;
+  height: 64px;
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 18px;
+  color: #8e8e93;
+}
+
+.value {
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.shippingValue {
+  color: #8e8e93;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+  width: 100%;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.totalValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 56px;
+  background-color: #05050f;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.checkoutButton:hover {
+  opacity: 0.9;
+}
+
+.continueButton {
+  width: 100%;
+  height: 56px;
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.continueButton:hover {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 1023px) {
+  .summary {
+    padding: 20px;
+  }
+
+  .totalValue {
+    font-size: 24px;
+  }
+}

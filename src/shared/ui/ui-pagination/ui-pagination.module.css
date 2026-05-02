@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 40px;
+}
+
+.pageButton {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 16px;
+  color: var(--secondary-text);
+}
+
+.active {
+  background-color: #0b0f24 !important;
+  color: #ffffff !important;
+}
+
+.navButton {
+  color: #8e92bc;
+  padding: 0 16px;
+  font-size: 16px;
+}
+
+.navButton:disabled {
+  color: #d1d5db;
+}
