@@ -12,3 +12,4 @@ export * from "./trash";
 export * from "./restart";
 export * from "./circle-pause";
 export * from "./circle-play";
+export * from "./spinner";
