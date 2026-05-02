@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
 import { UiButton } from "~shared/ui/ui-button";
-import {
-  CirclePause,
-  CirclePlay,
-  Clock,
-  Close,
-  Restart,
-} from "~shared/ui/icons";
-import styles from "./ui-register-banner.module.css";
+import { CirclePause, CirclePlay, Clock, Restart } from "~shared/ui/icons";
+import css from "./ui-register-banner.module.css";
+import { UiBanner, type UiBannerProps } from "../ui-banner";
+import { Flex } from "@/shared/ui/stack";
+import { classNames as clsx } from "@/shared/lib/classNames";
 
-type UiRegisterBannerProps = {
+type UiRegisterBannerProps = UiBannerProps & {
   initialSeconds?: number;
-  onClose?: () => void;
 };
 
 export const UiRegisterBanner = ({
   initialSeconds = 3599, // 0:59:59
-  onClose,
+  ...props
 }: UiRegisterBannerProps) => {
   const [toggleTimer, setToggleTimer] = useState<boolean>(true);
   const [seconds, setSeconds] = useState<number>(initialSeconds);
@@ -28,7 +24,7 @@ export const UiRegisterBanner = ({
 
     const interSec = setInterval(() => {
       setSeconds((prev) => prev - 1);
-      console.log("time");
+      // console.log("tick");
     }, 1000);
 
     return () => clearInterval(interSec);
@@ -54,60 +50,63 @@ export const UiRegisterBanner = ({
   };
 
   return (
-    <div className={styles.banner}>
-      <UiButton
-        variant="transparent"
-        className={styles.closeButton}
-        onClick={onClose}
-        aria-label="Close banner"
-      >
-        <Close width={20} height={20} color="var(--primary-text)" />
-      </UiButton>
-
-      <div className={styles.header}>
+    <UiBanner
+      {...props}
+      classNames={{
+        banner: css.banner,
+      }}
+    >
+      <UiBanner.Header>
         <Clock width={32} height={32} />
-        <h2 className={styles.title}>Special Deal!</h2>
-      </div>
-
-      <p className={styles.description}>
+        <h2 className={css.title}>Special Deal!</h2>
+      </UiBanner.Header>
+      <UiBanner.Body>
         Register now to unlock exclusive offers and discounts
-      </p>
-
-      <div className={styles.footer}>
-        <span className={styles.expiryLabel}>Offer expires in:</span>
-        <span className={styles.timer}>
-          {!isTimerStop ? formatTime(seconds) : "таймер истёк"}
-        </span>
-      </div>
-
-      <div className={styles.player}>
-        <UiButton
-          variant="transparent"
-          className={styles.restartButton}
-          onClick={restart}
-          aria-label="Restart timer"
-        >
-          <Restart width={30} height={30} color="var(--primary-text)" />
-        </UiButton>
-        <UiButton
-          variant="transparent"
-          className={`
-            ${styles.toggleButton}
-            ${isTimerStop ? styles.isDisable : ""}
-          `}
-          style={{
-            pointerEvents: isTimerStop ? "none" : "auto",
-          }}
-          onClick={toggle}
-          aria-label="Toggle timer"
-        >
-          {toggleTimer ? (
-            <CirclePause width={30} height={30} color="var(--primary-text)" />
-          ) : (
-            <CirclePlay width={30} height={30} color="var(--primary-text)" />
-          )}
-        </UiButton>
-      </div>
-    </div>
+      </UiBanner.Body>
+      <UiBanner.Footer>
+        <Flex direction="column" align="start" gap="12">
+          <span className={css.expiry__container}>
+            <span className={css.expiryLabel}>Offer expires in:</span>
+            <span className={css.timer}>
+              {!isTimerStop ? formatTime(seconds) : "таймер истёк"}
+            </span>
+          </span>
+          <div className={css.player}>
+            <UiButton
+              variant="transparent"
+              className={clsx(css.restartButton, { [css.highlight]: isTimerStop })}
+              onClick={restart}
+              aria-label="Restart timer"
+            >
+              <Restart width={30} height={30} color="var(--primary-text)" />
+            </UiButton>
+            <UiButton
+              variant="transparent"
+              className={`
+                ${css.toggleButton}
+                ${isTimerStop ? css.isDisable : ""}
+              `}
+              disabled={isTimerStop}
+              onClick={toggle}
+              aria-label="Toggle timer"
+            >
+              {toggleTimer ? (
+                <CirclePause
+                  width={30}
+                  height={30}
+                  color="var(--primary-text)"
+                />
+              ) : (
+                <CirclePlay
+                  width={30}
+                  height={30}
+                  color="var(--primary-text)"
+                />
+              )}
+            </UiButton>
+          </div>
+        </Flex>
+      </UiBanner.Footer>
+    </UiBanner>
   );
 };

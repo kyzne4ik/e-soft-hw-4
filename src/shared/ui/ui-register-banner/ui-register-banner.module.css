@@ -41,20 +41,32 @@
   opacity: 0.3;
 }
 
+.isDisable:hover {
+  opacity: 0.6;
+}
+
 .restartButton {
   padding: 4px;
   opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 .restartButton:hover {
   opacity: 1;
 }
 
+.highlight {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
 .header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
 }
 
 .title {
@@ -73,7 +85,6 @@
 .description {
   font-size: 14px;
   line-height: 1.4;
-  margin-bottom: 20px;
   opacity: 0.9;
 }
 
@@ -97,6 +108,11 @@
     justify-content: space-between;
   }
 }
+.expiry__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
 .expiryLabel {
   font-size: 14px;
@@ -108,4 +124,8 @@
   font-weight: var(--fw-bold);
   letter-spacing: 2px;
   font-variant-numeric: tabular-nums;
+}
+
+.banner {
+  gap: 6px;
 }
