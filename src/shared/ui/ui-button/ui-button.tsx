@@ -1,34 +1,41 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import clsx from "clsx";
-import styles from "./ui-button.module.css";
+import css from "./ui-button.module.css";
+import { Spinner } from "../icons";
+import { classNames } from "@/shared/lib/classNames";
 
 type ButtonVariant = "primary" | "secondary" | "transparent" | "danger";
 
 type UiButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
+  isLoading?: boolean;
 };
 
 const variants: Record<ButtonVariant, string> = {
-  primary: styles.primary,
-  secondary: styles.secondary,
-  transparent: styles.transparent,
-  danger: styles.danger,
+  primary: css.primary,
+  secondary: css.secondary,
+  transparent: css.transparent,
+  danger: css.danger,
 };
 
 export const UiButton = ({
   variant = "primary",
+  isLoading,
   children,
   className = "",
   ...props
 }: UiButtonProps) => {
   return (
     <button
-      className={clsx(styles.button, variants[variant], className)}
+      className={classNames(css.button, {}, [variants[variant], className])}
       {...props}
     >
-      {children}
+      {!isLoading ? (
+        children
+      ) : (
+        <Spinner width={24} height={24} className={css.spinner} />
+      )}
     </button>
   );
 };

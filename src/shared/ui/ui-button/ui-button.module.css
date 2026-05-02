@@ -30,7 +30,7 @@
 .secondary {
   background-color: var(--secondary-bg);
   color: var(--secondary-text);
-  border: 1px solid var(--primary-bg);
+  border: 1px solid var(--darker-light-gray);
 }
 
 .secondary:hover {
@@ -54,4 +54,17 @@
 
 .danger:hover {
   opacity: 0.9;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
