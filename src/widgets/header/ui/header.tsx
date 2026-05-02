@@ -2,9 +2,9 @@ import { Cart, User } from "~shared/ui/icons";
 import { UiButton } from "~shared/ui/ui-button";
 import styles from "./header.module.css";
 
-type CategoryType = "tv" | "phone" | "laptop" | "cart";
+export type CategoryType = "tv" | "phone" | "laptop" | "cart";
 
-type HeaderProps = {
+export type HeaderProps = {
   cartItemsCount?: number;
   activeCategory?: CategoryType;
   onCategoryChange?: (category: CategoryType) => void;
