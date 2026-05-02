@@ -8,7 +8,7 @@ export const RegistrationBannerWidget = () => {
 
   return (
     <UiRegisterBanner
-      // initialSeconds={3599}
+      initialSeconds={3599}
       onClose={() => setIsVisible(false)}
     />
   );
