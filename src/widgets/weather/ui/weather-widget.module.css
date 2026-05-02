@@ -1,0 +1,16 @@
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.formContent > :first-child {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .formContent {
+    flex-direction: column;
+  }
+}
