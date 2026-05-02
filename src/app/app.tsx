@@ -8,6 +8,8 @@ import { CartPage } from "~pages/cart";
 import styles from "./app.module.css";
 import { useContainer } from "@/shared/lib/context/container";
 import { Container } from "./providers/container-provider";
+import { WeatherWidget } from "@/widgets/weather";
+import { TestButton } from "@/features/test-modal";
 
 export default function App() {
   return (
@@ -61,6 +63,8 @@ function Content() {
           onApply={setFilters}
         />
         <RegistrationBannerWidget />
+        <WeatherWidget />
+        <TestButton/>
       </aside>
       <section className={styles.content}>
         <ProductList key={pageType} category={pageType} filters={filters} />
